@@ -1,0 +1,1967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anus Mushtaq — Nextovation Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<!-- Font Awesome 6 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+  :root{
+    --bg-0:#0A0014;
+    --bg-1:#170027;
+    --deep:#2A0056;
+    --violet:#3D0056;
+    --purple:#8A0BFF;
+    --purple-2:#A553FF;
+    --magenta:#E33FC5;
+    --pink:#FF39FF;
+    --text:#F3EEFB;
+    --text-dim:#B3A3D6;
+    --line: rgba(243,238,251,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{
+    min-height:100vh;
+    background:var(--bg-0);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    font-family:'Inter',sans-serif;
+    padding:34px 18px 10px;
+    gap:16px;
+    overflow-x:hidden;
+  }
+
+  /* ambient animated background blobs */
+  .bg-blob{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:0.45;
+    pointer-events:none;
+    z-index:0;
+  }
+  .bg-blob.b1{
+    width:480px; height:480px;
+    background:radial-gradient(circle, var(--purple), transparent 70%);
+    top:-140px; left:-140px;
+    animation:drift1 16s ease-in-out infinite;
+  }
+  .bg-blob.b2{
+    width:450px; height:450px;
+    background:radial-gradient(circle, var(--magenta), transparent 70%);
+    bottom:-160px; right:-120px;
+    animation:drift2 18s ease-in-out infinite;
+  }
+  .bg-blob.b3{
+    width:340px; height:340px;
+    background:radial-gradient(circle, rgba(16, 185, 129, 0.35), transparent 70%);
+    top:40%; right:10%;
+    animation:drift1 20s ease-in-out infinite reverse;
+  }
+  @keyframes drift1{
+    0%,100%{ transform:translate(0,0) scale(1);}
+    50%{ transform:translate(40px,30px) scale(1.1);}
+  }
+  @keyframes drift2{
+    0%,100%{ transform:translate(0,0) scale(1);}
+    50%{ transform:translate(-30px,-25px) scale(1.08);}
+  }
+
+  /* Main Container Layout */
+  .main-layout{
+    position:relative;
+    z-index:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:26px;
+    width:100%;
+    max-width:1320px;
+    margin:0 auto;
+  }
+
+  /* Side Services Columns */
+  .services-column{
+    flex:1;
+    max-width:365px;
+    min-width:305px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    animation:rise 0.8s cubic-bezier(.19,1,.22,1) both;
+  }
+  .services-left{
+    animation-delay:0.1s;
+  }
+  .services-right{
+    animation-delay:0.2s;
+  }
+
+  /* Column Headers */
+  .col-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:3px 8px 5px;
+  }
+  .col-title-wrap{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .pulse-dot{
+    width:8.5px;
+    height:8.5px;
+    border-radius:50%;
+    display:inline-block;
+    position:relative;
+  }
+  .dot-pink{
+    background:#FF2A85;
+    box-shadow:0 0 10px #FF2A85;
+    animation:dotPulsePink 2s infinite ease-in-out;
+  }
+  .dot-green{
+    background:#10B981;
+    box-shadow:0 0 10px #10B981;
+    animation:dotPulseGreen 2s infinite ease-in-out;
+  }
+  @keyframes dotPulsePink{
+    0%,100%{ transform:scale(1); opacity:1;}
+    50%{ transform:scale(1.3); opacity:0.6;}
+  }
+  @keyframes dotPulseGreen{
+    0%,100%{ transform:scale(1); opacity:1;}
+    50%{ transform:scale(1.3); opacity:0.6;}
+  }
+  .col-title{
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+  .services-left .col-title{
+    background:linear-gradient(90deg, #FF39FF, #E33FC5);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .services-right .col-title{
+    background:linear-gradient(90deg, #34D399, #A553FF);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .col-type{
+    font-size:12px;
+    font-weight:500;
+    color:var(--text-dim);
+  }
+  .services-cards-slider{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    width:100%;
+  }
+
+  /* Service Card Component */
+  .service-card{
+    display:flex;
+    align-items:flex-start;
+    gap:13px;
+    padding:13px 15px;
+    border-radius:18px;
+    background:rgba(255, 255, 255, 0.04);
+    border:1px solid rgba(243, 238, 251, 0.12);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    text-decoration:none;
+    color:var(--text);
+    transition:transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    box-shadow:0 5px 18px -2px rgba(0,0,0,0.28);
+  }
+  .service-card:hover{
+    transform:translateY(-3px);
+    background:rgba(255, 255, 255, 0.07);
+    border-color:rgba(227, 63, 197, 0.45);
+    box-shadow:0 10px 26px -4px rgba(138, 11, 255, 0.35);
+  }
+  .service-card:active{
+    transform:translateY(0);
+  }
+
+  /* Service Icon Box */
+  .service-icon-box{
+    width:44px;
+    height:44px;
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    font-size:18px;
+    color:#FFFFFF;
+    box-shadow:0 5px 12px -2px rgba(0,0,0,0.35);
+    transition:transform 0.22s ease;
+  }
+  .service-card:hover .service-icon-box{
+    transform:scale(1.06);
+  }
+
+  /* Specific Icon Gradients */
+  .icon-palette{ background:linear-gradient(135deg, #FF1744, #E33FC5); }
+  .icon-web{ background:linear-gradient(135deg, #2563EB, #6366F1); }
+  .icon-marketing{ background:linear-gradient(135deg, #FF5722, #FF9800); }
+  .icon-seo{ background:linear-gradient(135deg, #00BFA5, #00C853); }
+
+  .icon-wa{ background:linear-gradient(135deg, #00C853, #10B981); }
+  .icon-hr{ background:linear-gradient(135deg, #8B5CF6, #6366F1); }
+  .icon-pos{ background:linear-gradient(135deg, #EC4899, #D946EF); }
+  .icon-ai{ background:linear-gradient(135deg, #0284C7, #06B6D4); }
+
+  /* Service Content */
+  .service-info{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+    flex:1;
+    min-width:0;
+  }
+  .service-header-row{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:6px;
+  }
+  .service-title{
+    font-size:13.5px;
+    font-weight:700;
+    color:#FFFFFF;
+    line-height:1.25;
+    font-family:'Space Grotesk',sans-serif;
+  }
+  .service-arrow{
+    color:var(--text-dim);
+    flex-shrink:0;
+    margin-top:1px;
+    transition:transform 0.2s ease, color 0.2s ease;
+  }
+  .service-card:hover .service-arrow{
+    transform:translate(2px, -2px);
+    color:var(--pink);
+  }
+  .service-desc{
+    font-size:11.5px;
+    line-height:1.36;
+    color:rgba(243, 238, 251, 0.72);
+    margin-bottom:4px;
+  }
+
+  /* Badges / Tags */
+  .service-tag{
+    align-self:flex-start;
+    display:inline-flex;
+    align-items:center;
+    font-size:10px;
+    font-weight:600;
+    padding:2.5px 8px;
+    border-radius:100px;
+    border:1px solid;
+    letter-spacing:0.02em;
+    margin-top:1px;
+  }
+  .tag-pink{
+    color:#FF75B5;
+    border-color:rgba(255, 117, 181, 0.35);
+    background:rgba(255, 117, 181, 0.08);
+  }
+  .tag-blue{
+    color:#60A5FA;
+    border-color:rgba(96, 165, 250, 0.35);
+    background:rgba(96, 165, 250, 0.08);
+  }
+  .tag-orange{
+    color:#FDBA74;
+    border-color:rgba(253, 186, 116, 0.35);
+    background:rgba(253, 186, 116, 0.08);
+  }
+  .tag-teal{
+    color:#34D399;
+    border-color:rgba(52, 211, 153, 0.35);
+    background:rgba(52, 211, 153, 0.08);
+  }
+  .tag-green{
+    color:#34D399;
+    border-color:rgba(52, 211, 153, 0.35);
+    background:rgba(52, 211, 153, 0.08);
+  }
+  .tag-purple{
+    color:#C084FC;
+    border-color:rgba(192, 132, 252, 0.35);
+    background:rgba(192, 132, 252, 0.08);
+  }
+  .tag-magenta{
+    color:#F472B6;
+    border-color:rgba(244, 114, 182, 0.35);
+    background:rgba(244, 114, 182, 0.08);
+  }
+  .tag-cyan{
+    color:#38BDF8;
+    border-color:rgba(56, 189, 248, 0.35);
+    background:rgba(56, 189, 248, 0.08);
+  }
+
+  /* Main Central Card */
+  .stage{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    animation:rise 0.7s cubic-bezier(.19,1,.22,1) both;
+    perspective:1000px;
+  }
+  @keyframes rise{
+    from{ opacity:0; transform:translateY(16px);}
+    to{ opacity:1; transform:translateY(0);}
+  }
+
+  .card-glow-aura{
+    position:absolute;
+    top:-22px; left:-22px; right:-22px; bottom:-22px;
+    border-radius:45px;
+    background:radial-gradient(circle, rgba(227,63,197,0.32), rgba(138,11,255,0.25) 55%, transparent 75%);
+    filter:blur(30px);
+    opacity:0.75;
+    z-index:-1;
+    pointer-events:none;
+    animation:auraPulse 4.5s ease-in-out infinite alternate;
+  }
+  @keyframes auraPulse{
+    0%{ transform:scale(0.96); opacity:0.55; }
+    100%{ transform:scale(1.05); opacity:0.85; filter:blur(36px); }
+  }
+
+  .card-frame{
+    position:relative;
+    width:388px;
+    max-width:92vw;
+    border-radius:30px;
+    padding:1.5px;
+    background:conic-gradient(from var(--ang,0deg), var(--purple), var(--magenta), var(--pink), var(--purple-2), var(--purple));
+    animation:spin 7s linear infinite;
+    box-shadow:0 12px 40px -6px rgba(138, 11, 255, 0.4);
+    transition:transform 0.15s ease-out;
+  }
+  @keyframes spin{
+    to{ --ang:360deg; }
+  }
+  @property --ang{
+    syntax:'<angle>';
+    inherits:false;
+    initial-value:0deg;
+  }
+
+  .card{
+    position:relative;
+    border-radius:29px;
+    overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 85% -10%, rgba(227,63,197,0.22), transparent 55%),
+      radial-gradient(90% 70% at -10% 110%, rgba(138,11,255,0.24), transparent 55%),
+      linear-gradient(160deg, var(--bg-1) 0%, #170027 55%, var(--violet) 130%);
+    color:var(--text);
+  }
+
+  /* Ambient Canvas & Outer Card Aura */
+  .bg-canvas{
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .content{
+    position:relative;
+    padding:18px 22px 20px;
+  }
+
+  .brand-row{
+    margin-bottom:14px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    opacity:0;
+    animation:fadeUp 0.6s ease 0.15s forwards;
+  }
+  .brand-logo{
+    height:34px;
+    width:auto;
+    max-width:100%;
+    display:block;
+    margin:0 auto;
+    filter:drop-shadow(0 2px 10px rgba(227, 63, 197, 0.25));
+  }
+
+  .identity{
+    margin-bottom:18px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    opacity:0;
+    animation:fadeUp 0.6s ease 0.28s forwards;
+  }
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:5px 12px;
+    border-radius:100px;
+    border:1px solid rgba(165,83,255,0.45);
+    background:rgba(165,83,255,0.08);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--purple-2);
+    margin-bottom:2px;
+    font-weight:600;
+  }
+  .badge::before{
+    content:"";
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--pink);
+    box-shadow:0 0 8px var(--pink);
+    animation:blink 1.8s ease-in-out infinite;
+  }
+  @keyframes blink{
+    0%,100%{ opacity:1;}
+    50%{ opacity:0.3;}
+  }
+  .name{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:30px;
+    line-height:1.1;
+    font-weight:700;
+    letter-spacing:-0.01em;
+    margin-bottom:6px;
+    background:linear-gradient(100deg, #FFFFFF 10%, var(--purple-2) 45%, var(--pink) 75%, #FFFFFF 100%);
+    background-size:250% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:shine 5s linear infinite;
+  }
+  @keyframes shine{
+    to{ background-position:250% center; }
+  }
+
+  .divider{
+    height:1px;
+    background:linear-gradient(90deg, var(--line), transparent);
+    margin:16px 0;
+    opacity:0;
+    animation:fadeUp 0.6s ease 0.36s forwards;
+  }
+
+  .contact-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-bottom:6px;
+  }
+  .contact-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    color:var(--text);
+    opacity:0;
+    animation:fadeUp 0.55s ease forwards;
+    transition:transform 0.2s ease;
+  }
+  .contact-item:hover{ transform:translateX(3px); }
+  .contact-item:nth-child(1){ animation-delay:0.44s; }
+  .contact-item:nth-child(2){ animation-delay:0.52s; }
+  .contact-item:nth-child(3){ animation-delay:0.60s; }
+  .contact-item:nth-child(4){ animation-delay:0.68s; }
+
+  .icon-wrap{
+    width:34px; height:34px;
+    flex-shrink:0;
+    border-radius:10px;
+    background:rgba(243,238,251,0.06);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    transition:box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    font-size:15px;
+    color:var(--magenta);
+  }
+  .contact-item:hover .icon-wrap{
+    border-color:rgba(227,63,197,0.55);
+    background:rgba(227,63,197,0.10);
+    box-shadow:0 0 16px rgba(227,63,197,0.35);
+  }
+  .contact-text{
+    display:flex;
+    flex-direction:column;
+    gap:1px;
+    min-width:0;
+  }
+  .contact-label{
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--text-dim);
+    font-weight:600;
+  }
+  .contact-value{
+    font-size:14px;
+    font-weight:500;
+    color:var(--text);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
+  /* Social Media Section */
+  .social-section{
+    margin-top:16px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    opacity:0;
+    animation:fadeUp 0.6s ease 0.74s forwards;
+  }
+  .social-label{
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--magenta);
+    text-align:center;
+  }
+  .social-bar{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:100%;
+    padding:2px 0;
+    background:transparent;
+    border:none;
+    box-shadow:none;
+  }
+  .social-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    color:var(--magenta);
+    font-size:17px;
+    text-decoration:none;
+    background:transparent;
+    transition:all 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .social-btn:hover{
+    color:#FFFFFF;
+    background:rgba(227, 63, 197, 0.25);
+    transform:translateY(-2px) scale(1.18);
+    box-shadow:0 0 16px rgba(227, 63, 197, 0.6);
+  }
+
+  .footer-tag{
+    margin-top:16px;
+    padding-top:14px;
+    border-top:1px solid var(--line);
+    font-size:11.5px;
+    color:var(--text-dim);
+    text-align:center;
+    letter-spacing:0.02em;
+    opacity:0;
+    animation:fadeUp 0.6s ease 0.82s forwards;
+  }
+  .footer-tag b{
+    color:var(--pink);
+    font-weight:600;
+  }
+
+  /* Join.chat WhatsApp Widget (Right Side) */
+  .joinchat-widget{
+    position:fixed;
+    bottom:28px;
+    right:28px;
+    left:auto;
+    z-index:9999;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    font-family:'Inter', sans-serif;
+  }
+
+  /* Bubble prompt */
+  .joinchat-bubble{
+    background:rgba(23, 0, 39, 0.92);
+    color:var(--text);
+    padding:9px 14px;
+    border-radius:14px;
+    font-size:12.5px;
+    font-weight:500;
+    border:1px solid rgba(165, 83, 255, 0.35);
+    box-shadow:0 8px 24px -4px rgba(0,0,0,0.5);
+    margin-bottom:12px;
+    cursor:pointer;
+    white-space:nowrap;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    position:relative;
+    animation:bubbleIn 0.5s ease 1s both, floatSmall 3s ease-in-out infinite alternate;
+    transform-origin:bottom right;
+  }
+  .joinchat-bubble::after{
+    content:"";
+    position:absolute;
+    bottom:-6px;
+    right:22px;
+    left:auto;
+    width:10px;
+    height:10px;
+    background:rgba(23, 0, 39, 0.92);
+    border-right:1px solid rgba(165, 83, 255, 0.35);
+    border-bottom:1px solid rgba(165, 83, 255, 0.35);
+    transform:rotate(45deg);
+  }
+  @keyframes bubbleIn{
+    from{ opacity:0; transform:scale(0.8) translateY(10px); }
+    to{ opacity:1; transform:scale(1) translateY(0); }
+  }
+  @keyframes floatSmall{
+    0%{ transform:translateY(0); }
+    100%{ transform:translateY(-4px); }
+  }
+
+  /* Floating WhatsApp Button */
+  .joinchat-btn{
+    position:relative;
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    background:linear-gradient(135deg, #25D366, #128C7E);
+    color:#FFFFFF;
+    border:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:29px;
+    cursor:pointer;
+    box-shadow:0 8px 25px rgba(37, 211, 102, 0.45);
+    transition:transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+  }
+  .joinchat-btn:hover{
+    transform:scale(1.08);
+    box-shadow:0 12px 30px rgba(37, 211, 102, 0.65);
+  }
+  .joinchat-pulse{
+    position:absolute;
+    top:-4px; left:-4px; right:-4px; bottom:-4px;
+    border-radius:50%;
+    border:2px solid rgba(37, 211, 102, 0.6);
+    animation:joinPulse 2s ease-out infinite;
+    pointer-events:none;
+  }
+  @keyframes joinPulse{
+    0%{ transform:scale(1); opacity:0.9; }
+    100%{ transform:scale(1.4); opacity:0; }
+  }
+  .joinchat-badge{
+    position:absolute;
+    top:-2px;
+    right:-2px;
+    background:#FF2A85;
+    color:#fff;
+    font-size:11px;
+    font-weight:700;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:2px solid #0A0014;
+  }
+
+  /* Chat Box Popup */
+  .joinchat-box{
+    position:absolute;
+    bottom:70px;
+    right:0;
+    left:auto;
+    width:320px;
+    border-radius:20px;
+    background:#170027;
+    border:1px solid rgba(165, 83, 255, 0.35);
+    box-shadow:0 18px 45px rgba(0,0,0,0.65);
+    overflow:hidden;
+    display:none;
+    flex-direction:column;
+    z-index:10000;
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    animation:chatBoxPop 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+  .joinchat-box.active{
+    display:flex;
+  }
+  @keyframes chatBoxPop{
+    from{ opacity:0; transform:scale(0.9) translateY(12px); }
+    to{ opacity:1; transform:scale(1) translateY(0); }
+  }
+
+  .joinchat-header{
+    background:linear-gradient(135deg, #075E54, #128C7E);
+    padding:14px 16px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#FFFFFF;
+  }
+  .joinchat-avatar{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:#FFFFFF;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:6px;
+    flex-shrink:0;
+    box-shadow:0 2px 8px rgba(0,0,0,0.18);
+    overflow:hidden;
+  }
+  .joinchat-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+  }
+  .joinchat-agent{
+    flex:1;
+    min-width:0;
+  }
+  .joinchat-name{
+    font-size:14px;
+    font-weight:700;
+    color:#FFFFFF;
+    font-family:'Space Grotesk',sans-serif;
+  }
+  .joinchat-status{
+    font-size:11px;
+    color:rgba(255,255,255,0.85);
+    display:flex;
+    align-items:center;
+    gap:5px;
+    margin-top:2px;
+  }
+  .status-indicator{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#25D366;
+    box-shadow:0 0 6px #25D366;
+  }
+  .joinchat-close{
+    background:transparent;
+    border:none;
+    color:rgba(255,255,255,0.7);
+    font-size:16px;
+    cursor:pointer;
+    padding:4px;
+    transition:color 0.2s ease;
+  }
+  .joinchat-close:hover{
+    color:#FFFFFF;
+  }
+
+  .joinchat-body{
+    padding:18px 16px;
+    background:radial-gradient(100% 100% at 50% 0%, rgba(138, 11, 255, 0.08), transparent 80%), #12001F;
+  }
+  .joinchat-msg{
+    background:rgba(255, 255, 255, 0.08);
+    border:1px solid rgba(255, 255, 255, 0.08);
+    padding:12px 14px;
+    border-radius:14px 14px 14px 2px;
+    font-size:12.5px;
+    line-height:1.45;
+    color:var(--text);
+  }
+  .joinchat-time{
+    display:block;
+    font-size:10px;
+    color:var(--text-dim);
+    margin-top:6px;
+    text-align:right;
+  }
+
+  .joinchat-footer{
+    padding:12px 16px 16px;
+    background:#12001F;
+    border-top:1px solid rgba(243, 238, 251, 0.08);
+  }
+  .joinchat-send-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    width:100%;
+    padding:11px 16px;
+    border-radius:12px;
+    background:#25D366;
+    color:#FFFFFF;
+    font-weight:600;
+    font-size:13px;
+    text-decoration:none;
+    transition:background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow:0 4px 14px rgba(37, 211, 102, 0.4);
+  }
+  .joinchat-send-btn:hover{
+    background:#20ba59;
+    transform:translateY(-1px);
+    box-shadow:0 6px 18px rgba(37, 211, 102, 0.55);
+  }
+
+  .footer-tag{
+    margin-top:18px;
+    padding-top:14px;
+    border-top:1px solid var(--line);
+    font-size:11.5px;
+    color:var(--text-dim);
+    text-align:center;
+    letter-spacing:0.02em;
+    opacity:0;
+    animation:fadeUp 0.6s ease 0.82s forwards;
+  }
+  .footer-tag b{
+    color:var(--pink);
+    font-weight:600;
+  }
+
+  /* Dual Showcase Section: Client Logos + Industries (Bottom) */
+  .showcase-section{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:1320px;
+    margin:0 auto;
+    padding-bottom:12px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    animation:rise 0.8s cubic-bezier(.19,1,.22,1) 0.3s both;
+  }
+  .showcase-group{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+  }
+  .showcase-header{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    background:linear-gradient(90deg, #E33FC5, #A553FF, #38BDF8);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    position:relative;
+    z-index:3;
+    margin-bottom:3px;
+  }
+  .showcase-header i{
+    color:var(--pink);
+    font-size:11.5px;
+  }
+  .marquee-wrapper{
+    width:100%;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    mask-image:linear-gradient(to right, transparent, black 7%, black 93%, transparent);
+    -webkit-mask-image:linear-gradient(to right, transparent, black 7%, black 93%, transparent);
+    padding:8px 0;
+  }
+  .marquee-track{
+    display:flex;
+    width:max-content;
+    gap:12px;
+  }
+  .marquee-track.track-left{
+    animation:marqueeScrollLeft 82s linear infinite;
+  }
+  .marquee-track.track-right{
+    animation:marqueeScrollRight 75s linear infinite;
+  }
+  .marquee-track:hover{
+    animation-play-state:paused;
+  }
+  @keyframes marqueeScrollLeft{
+    0%{ transform:translateX(0); }
+    100%{ transform:translateX(-50%); }
+  }
+  @keyframes marqueeScrollRight{
+    0%{ transform:translateX(-50%); }
+    100%{ transform:translateX(0); }
+  }
+  .marquee-content{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-shrink:0;
+  }
+
+  /* Client Logo Glass Card */
+  .client-logo-card{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    height:56px;
+    min-width:138px;
+    padding:6px 16px;
+    border-radius:14px;
+    background:rgba(255, 255, 255, 0.045);
+    border:1px solid rgba(243, 238, 251, 0.12);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    transition:all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    overflow:hidden;
+  }
+  .client-logo-card:hover{
+    background:rgba(255, 255, 255, 0.1);
+    border-color:rgba(227, 63, 197, 0.55);
+    transform:translateY(-3px) scale(1.05);
+    box-shadow:0 6px 22px rgba(165, 83, 255, 0.32);
+  }
+  .client-logo-card img{
+    height:50px;
+    width:115px;
+    object-fit:contain;
+    opacity:0.95;
+    transition:opacity 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+    transform:scale(1.45);
+  }
+  .client-logo-card:hover img{
+    opacity:1;
+    transform:scale(1.52);
+    filter:drop-shadow(0 0 8px rgba(255, 255, 255, 0.75));
+  }
+
+  /* Industry Pills */
+  .industry-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    padding:4px 12px;
+    border-radius:100px;
+    font-size:11px;
+    font-weight:600;
+    text-decoration:none;
+    white-space:nowrap;
+    border:1px solid;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    transition:all 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .industry-pill:hover{
+    transform:translateY(-2px) scale(1.05);
+    box-shadow:0 0 12px currentColor;
+  }
+  .industry-pill i{
+    font-size:11.5px;
+  }
+
+  .pill-mint{ color:#34D399; border-color:rgba(52, 211, 153, 0.35); background:rgba(52, 211, 153, 0.08); }
+  .pill-teal{ color:#2DD4BF; border-color:rgba(45, 212, 191, 0.35); background:rgba(45, 212, 191, 0.08); }
+  .pill-coral{ color:#F87171; border-color:rgba(248, 113, 113, 0.35); background:rgba(248, 113, 113, 0.08); }
+  .pill-emerald{ color:#10B981; border-color:rgba(16, 185, 129, 0.35); background:rgba(16, 185, 129, 0.08); }
+  .pill-sky{ color:#38BDF8; border-color:rgba(56, 189, 248, 0.35); background:rgba(56, 189, 248, 0.08); }
+  .pill-pink{ color:#F472B6; border-color:rgba(244, 114, 182, 0.35); background:rgba(244, 114, 182, 0.08); }
+  .pill-amber{ color:#FBBF24; border-color:rgba(251, 191, 36, 0.35); background:rgba(251, 191, 36, 0.08); }
+  .pill-yellow{ color:#FCD34D; border-color:rgba(252, 211, 77, 0.35); background:rgba(252, 211, 77, 0.08); }
+  .pill-cyan{ color:#06B6D4; border-color:rgba(6, 182, 212, 0.35); background:rgba(6, 182, 212, 0.08); }
+  .pill-indigo{ color:#818CF8; border-color:rgba(129, 140, 248, 0.35); background:rgba(129, 140, 248, 0.08); }
+  .pill-slate{ color:#94A3B8; border-color:rgba(148, 163, 184, 0.35); background:rgba(148, 163, 184, 0.08); }
+  .pill-gold{ color:#F59E0B; border-color:rgba(245, 158, 11, 0.35); background:rgba(245, 158, 11, 0.08); }
+
+  /* Mobile Fade-In / Fade-Out Services Component */
+  .mobile-services-section{
+    display:none;
+  }
+  .mobile-services-fader{
+    position:relative;
+    width:388px;
+    max-width:92vw;
+    height:112px;
+    margin:0 auto;
+  }
+  .mobile-services-fader .service-card{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(8px) scale(0.97);
+    transition:opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0.6s;
+    pointer-events:none;
+    padding:13px 15px 14px;
+  }
+  .mobile-services-fader .service-card.active{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0) scale(1);
+    pointer-events:auto;
+    z-index:2;
+  }
+  .mobile-services-dots{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    margin-top:6px;
+  }
+  .fader-dot{
+    width:6px;
+    height:6px;
+    border-radius:100px;
+    background:rgba(243, 238, 251, 0.2);
+    transition:all 0.35s ease;
+    cursor:pointer;
+  }
+  .fader-dot.active{
+    width:18px;
+    background:linear-gradient(90deg, var(--pink), var(--purple-2));
+    box-shadow:0 0 8px rgba(227, 63, 197, 0.6);
+  }
+
+  @keyframes fadeUp{
+    from{ opacity:0; transform:translateY(8px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+
+  /* Responsive styling */
+  @media (max-width: 1140px){
+    html,body{
+      min-height:auto;
+      padding:20px 14px 4px;
+      gap:14px;
+    }
+    .main-layout{
+      flex-direction:column;
+      gap:14px;
+      width:100%;
+    }
+    .stage{
+      order:1;
+      width:100%;
+    }
+    .services-column{
+      display:none !important;
+    }
+    .mobile-services-section{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:6px;
+      width:100%;
+      max-width:100%;
+      margin:0 auto;
+      z-index:2;
+      position:relative;
+      animation:rise 0.8s cubic-bezier(.19,1,.22,1) 0.2s both;
+    }
+    .showcase-section{
+      padding-bottom:0 !important;
+      margin-bottom:0 !important;
+      gap:6px;
+    }
+  }
+
+  @media (max-width:480px){
+    html,body{
+      min-height:auto;
+      padding:14px 10px 2px !important;
+      gap:10px !important;
+    }
+    .card-frame{ width:100%; }
+    .content{ padding:14px 16px 18px; }
+    .brand-row{ margin-bottom:10px; }
+    .brand-row svg{ height:56px; }
+    .identity{ margin-bottom:16px; }
+    .name{font-size:26px;}
+    .role{ font-size:13px; }
+    .divider{ margin:16px 0; }
+    .contact-list{ gap:12px; }
+    .footer-tag{ margin-top:16px; padding-top:14px; }
+    .mobile-services-fader{ height:108px; width:100%; }
+    .mobile-services-fader .service-card{ padding:12px 14px 14px; }
+    .service-icon-box{ width:42px; height:42px; font-size:17px; }
+    .client-logo-card{ height:48px; min-width:118px; padding:4px 12px; }
+    .client-logo-card img{ height:42px; width:98px; }
+    .showcase-section{
+      padding-bottom:0 !important;
+      gap:6px !important;
+      margin-bottom:0 !important;
+    }
+    .showcase-group{ gap:3px !important; }
+    .marquee-wrapper{ padding:6px 0 !important; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="bg-canvas" class="bg-canvas"></canvas>
+<div class="bg-blob b1"></div>
+<div class="bg-blob b2"></div>
+<div class="bg-blob b3"></div>
+
+<main class="main-layout">
+
+  <!-- LEFT COLUMN: CREATIVE & GROWTH -->
+  <aside class="services-column services-left">
+    <div class="col-header">
+      <div class="col-title-wrap">
+        <span class="pulse-dot dot-pink"></span>
+        <span class="col-title">CREATIVE &amp; GROWTH</span>
+      </div>
+      <span class="col-type">Services</span>
+    </div>
+    <div class="services-cards-slider">
+      <!-- Card 1: Graphic Designing / Branding -->
+      <a class="service-card" href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20Graphic%20Designing%20%2F%20Branding%20services." target="_blank" rel="noopener">
+        <div class="service-icon-box icon-palette">
+          <i class="fa-solid fa-palette"></i>
+        </div>
+        <div class="service-info">
+          <div class="service-header-row">
+            <h3 class="service-title">Graphic Designing / Branding</h3>
+            <svg class="service-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </div>
+          <p class="service-desc">Logos, brand identity, social creatives &amp; packaging design.</p>
+          <span class="service-tag tag-pink">Creative</span>
+        </div>
+      </a>
+
+      <!-- Card 2: Website Designing -->
+      <a class="service-card" href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20Website%20Designing%20services%20(WordPress%2C%20Shopify%2C%20Next.js)." target="_blank" rel="noopener">
+        <div class="service-icon-box icon-web">
+          <i class="fa-solid fa-globe"></i>
+        </div>
+        <div class="service-info">
+          <div class="service-header-row">
+            <h3 class="service-title">Website Designing</h3>
+            <svg class="service-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </div>
+          <p class="service-desc">WordPress, Shopify, Next.js eCommerce, custom portals &amp; fast stores.</p>
+          <span class="service-tag tag-blue">WordPress • Shopify • Next.js</span>
+        </div>
+      </a>
+
+      <!-- Card 3: Digital Marketing -->
+      <a class="service-card" href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20Digital%20Marketing%20(Meta%20%26%20Google%20Ads)." target="_blank" rel="noopener">
+        <div class="service-icon-box icon-marketing">
+          <i class="fa-solid fa-bullhorn"></i>
+        </div>
+        <div class="service-info">
+          <div class="service-header-row">
+            <h3 class="service-title">Digital Marketing</h3>
+            <svg class="service-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </div>
+          <p class="service-desc">Meta &amp; Google Ads, high-ROI campaigns &amp; social growth.</p>
+          <span class="service-tag tag-orange">Meta &amp; Google Ads</span>
+        </div>
+      </a>
+
+      <!-- Card 4: SEO Optimization -->
+      <a class="service-card" href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20SEO%20Optimization%20services." target="_blank" rel="noopener">
+        <div class="service-icon-box icon-seo">
+          <i class="fa-solid fa-arrow-trend-up"></i>
+        </div>
+        <div class="service-info">
+          <div class="service-header-row">
+            <h3 class="service-title">SEO Optimization</h3>
+            <svg class="service-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </div>
+          <p class="service-desc">Google #1 rankings, organic visibility &amp; technical SEO audit.</p>
+          <span class="service-tag tag-teal">Google #1 Rank</span>
+        </div>
+      </a>
+    </div>
+  </aside>
+
+  <!-- CENTER: DIGITAL CARD -->
+  <div class="stage">
+    <div class="card-glow-aura"></div>
+    <div class="card-frame" id="cardFrame">
+      <div class="card" id="card">
+        <div class="content">
+          <div class="brand-row">
+            <img src="logo.svg" alt="Nextovation Hub" class="brand-logo" />
+          </div>
+
+          <div class="identity">
+            <div class="name">Anus Mushtaq</div>
+            <span class="badge">Founder &amp; CEO</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="contact-list">
+            <a class="contact-item" href="https://wa.me/923113245512" target="_blank" rel="noopener">
+              <span class="icon-wrap">
+                <i class="fa-brands fa-whatsapp"></i>
+              </span>
+              <span class="contact-text">
+                <span class="contact-label">WhatsApp</span>
+                <span class="contact-value">+92-311-3245512</span>
+              </span>
+            </a>
+
+            <a class="contact-item" href="mailto:info@nextovationhub.com">
+              <span class="icon-wrap">
+                <i class="fa-regular fa-envelope"></i>
+              </span>
+              <span class="contact-text">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">info@nextovationhub.com</span>
+              </span>
+            </a>
+
+            <a class="contact-item" href="https://nextovationhub.com/" target="_blank" rel="noopener">
+              <span class="icon-wrap">
+                <i class="fa-solid fa-globe"></i>
+              </span>
+              <span class="contact-text">
+                <span class="contact-label">Website</span>
+                <span class="contact-value">nextovationhub.com</span>
+              </span>
+            </a>
+
+            <a class="contact-item" href="https://www.google.com/maps/search/?api=1&query=Clifton+Karachi+Pakistan" target="_blank" rel="noopener">
+              <span class="icon-wrap">
+                <i class="fa-solid fa-location-dot"></i>
+              </span>
+              <span class="contact-text">
+                <span class="contact-label">Location</span>
+                <span class="contact-value">Clifton, Karachi, Pakistan</span>
+              </span>
+            </a>
+          </div>
+
+          <!-- Social Media Section -->
+          <div class="social-section">
+            <div class="social-label">CONNECT WITH US</div>
+            <div class="social-bar">
+              <a href="https://facebook.com" target="_blank" rel="noopener" class="social-btn" title="Facebook" aria-label="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener" class="social-btn" title="Instagram" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-btn" title="LinkedIn" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a href="https://threads.net" target="_blank" rel="noopener" class="social-btn" title="Threads" aria-label="Threads">
+                <i class="fa-brands fa-threads"></i>
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener" class="social-btn" title="YouTube" aria-label="YouTube">
+                <i class="fa-brands fa-youtube"></i>
+              </a>
+              <a href="https://github.com" target="_blank" rel="noopener" class="social-btn" title="GitHub" aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="https://wa.me/923113245512" target="_blank" rel="noopener" class="social-btn" title="WhatsApp" aria-label="WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-tag">Empowering <b>Imagination</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT COLUMN: TECH & AI SYSTEMS -->
+  <aside class="services-column services-right">
+    <div class="col-header">
+      <div class="col-title-wrap">
+        <span class="pulse-dot dot-green"></span>
+        <span class="col-title">TECH &amp; AI SYSTEMS</span>
+      </div>
+      <span class="col-type">Solutions</span>
+    </div>
+    <div class="services-cards-slider">
+      <!-- Card 1: Business WhatsApp API -->
+      <a class="service-card" href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20Business%20WhatsApp%20API%20solutions." target="_blank" rel="noopener">
+        <div class="service-icon-box icon-wa">
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+        <div class="service-info">
+          <div class="service-header-row">
+            <h3 class="service-title">Business WhatsApp API</h3>
+            <svg class="service-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </div>
+          <p class="service-desc">Transactional alerts, OTPs, chatbot flows &amp; automated broadcast messaging.</p>
+          <span class="service-tag tag-green">Transactional API</span>
+        </div>
+      </a>
+
+      <!-- Card 2: HR & Payroll Management -->
+      <a class="service-card" href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20HR%20%26%20Payroll%20Management%20systems." target="_blank" rel="noopener">
+        <div class="service-icon-box icon-hr">
+          <i class="fa-solid fa-user-gear"></i>
+        </div>
+        <div class="service-info">
+          <div class="service-header-row">
+            <h3 class="service-title">HR &amp; Payroll Management</h3>
+            <svg class="service-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </div>
+          <p class="service-desc">Employee attendance, salary calculation, leaves &amp; payroll slips.</p>
+          <span class="service-tag tag-purple">HR &amp; Payroll</span>
+        </div>
+      </a>
+
+      <!-- Card 3: Point of Sale (POS) -->
+      <a class="service-card" href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20Point%20of%20Sale%20(POS)%20software." target="_blank" rel="noopener">
+        <div class="service-icon-box icon-pos">
+          <i class="fa-solid fa-cash-register"></i>
+        </div>
+        <div class="service-info">
+          <div class="service-header-row">
+            <h3 class="service-title">Point of Sale (POS)</h3>
+            <svg class="service-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </div>
+          <p class="service-desc">Multi-store cloud billing, stock sync &amp; thermal receipts.</p>
+          <span class="service-tag tag-magenta">Retail POS</span>
+        </div>
+      </a>
+
+      <!-- Card 4: AI Chatbots & Automation -->
+      <a class="service-card" href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20AI%20Chatbots%20%26%20Automation%20solutions." target="_blank" rel="noopener">
+        <div class="service-icon-box icon-ai">
+          <i class="fa-solid fa-robot"></i>
+        </div>
+        <div class="service-info">
+          <div class="service-header-row">
+            <h3 class="service-title">AI Chatbots &amp; Automation</h3>
+            <svg class="service-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </div>
+          <p class="service-desc">24/7 intelligent customer assistance &amp; smart workflow bots.</p>
+          <span class="service-tag tag-cyan">Smart AI</span>
+        </div>
+      </a>
+    </div>
+  </aside>
+
+</main>
+
+<!-- MOBILE SERVICES FADE-IN / FADE-OUT SECTION -->
+<section class="mobile-services-section" id="mobileServicesSection">
+  <div class="showcase-header">
+    <i class="fa-solid fa-layer-group"></i>
+    <span>FEATURED SERVICES &amp; SOLUTIONS</span>
+  </div>
+
+  <div class="mobile-services-fader" id="mobileServicesFader">
+    <!-- 1. Graphic Designing -->
+    <a class="service-card active" href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20Graphic%20Designing%20%2F%20Branding%20services." target="_blank" rel="noopener">
+      <div class="service-icon-box icon-palette">
+        <i class="fa-solid fa-palette"></i>
+      </div>
+      <div class="service-info">
+        <div class="service-header-row">
+          <h3 class="service-title">Graphic Designing / Branding</h3>
+          <svg class="service-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </div>
+        <p class="service-desc">Logos, brand identity, social creatives &amp; packaging design.</p>
+        <span class="service-tag tag-pink">Creative</span>
+      </div>
+    </a>
+
+    <!-- 2. Website Designing -->
+    <a class="service-card" href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20Website%20Designing%20services%20(WordPress%2C%20Shopify%2C%20Next.js)." target="_blank" rel="noopener">
+      <div class="service-icon-box icon-web">
+        <i class="fa-solid fa-globe"></i>
+      </div>
+      <div class="service-info">
+        <div class="service-header-row">
+          <h3 class="service-title">Website Designing</h3>
+          <svg class="service-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </div>
+        <p class="service-desc">WordPress, Shopify, Next.js eCommerce &amp; custom stores.</p>
+        <span class="service-tag tag-blue">WordPress • Shopify</span>
+      </div>
+    </a>
+
+    <!-- 3. Digital Marketing -->
+    <a class="service-card" href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20Digital%20Marketing%20(Meta%20%26%20Google%20Ads)." target="_blank" rel="noopener">
+      <div class="service-icon-box icon-marketing">
+        <i class="fa-solid fa-bullhorn"></i>
+      </div>
+      <div class="service-info">
+        <div class="service-header-row">
+          <h3 class="service-title">Digital Marketing</h3>
+          <svg class="service-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </div>
+        <p class="service-desc">Meta &amp; Google Ads, high-ROI campaigns &amp; social growth.</p>
+        <span class="service-tag tag-orange">Meta &amp; Google Ads</span>
+      </div>
+    </a>
+
+    <!-- 4. SEO Optimization -->
+    <a class="service-card" href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20SEO%20Optimization%20services." target="_blank" rel="noopener">
+      <div class="service-icon-box icon-seo">
+        <i class="fa-solid fa-arrow-trend-up"></i>
+      </div>
+      <div class="service-info">
+        <div class="service-header-row">
+          <h3 class="service-title">SEO Optimization</h3>
+          <svg class="service-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </div>
+        <p class="service-desc">Google #1 rankings, organic visibility &amp; technical audit.</p>
+        <span class="service-tag tag-teal">Google #1 Rank</span>
+      </div>
+    </a>
+
+    <!-- 5. Business WhatsApp API -->
+    <a class="service-card" href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20Business%20WhatsApp%20API%20solutions." target="_blank" rel="noopener">
+      <div class="service-icon-box icon-wa">
+        <i class="fa-brands fa-whatsapp"></i>
+      </div>
+      <div class="service-info">
+        <div class="service-header-row">
+          <h3 class="service-title">Business WhatsApp API</h3>
+          <svg class="service-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </div>
+        <p class="service-desc">Transactional alerts, OTPs, chatbot flows &amp; broadcast messaging.</p>
+        <span class="service-tag tag-green">Transactional API</span>
+      </div>
+    </a>
+
+    <!-- 6. HR & Payroll Management -->
+    <a class="service-card" href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20HR%20%26%20Payroll%20Management%20systems." target="_blank" rel="noopener">
+      <div class="service-icon-box icon-hr">
+        <i class="fa-solid fa-user-gear"></i>
+      </div>
+      <div class="service-info">
+        <div class="service-header-row">
+          <h3 class="service-title">HR &amp; Payroll Management</h3>
+          <svg class="service-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </div>
+        <p class="service-desc">Employee attendance, salary calculation &amp; payroll slips.</p>
+        <span class="service-tag tag-purple">HR &amp; Payroll</span>
+      </div>
+    </a>
+
+    <!-- 7. Point of Sale (POS) -->
+    <a class="service-card" href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20Point%20of%20Sale%20(POS)%20software." target="_blank" rel="noopener">
+      <div class="service-icon-box icon-pos">
+        <i class="fa-solid fa-cash-register"></i>
+      </div>
+      <div class="service-info">
+        <div class="service-header-row">
+          <h3 class="service-title">Point of Sale (POS)</h3>
+          <svg class="service-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </div>
+        <p class="service-desc">Multi-store cloud billing, stock sync &amp; thermal receipts.</p>
+        <span class="service-tag tag-magenta">Retail POS</span>
+      </div>
+    </a>
+
+    <!-- 8. AI Chatbots & Automation -->
+    <a class="service-card" href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20AI%20Chatbots%20%26%20Automation%20solutions." target="_blank" rel="noopener">
+      <div class="service-icon-box icon-ai">
+        <i class="fa-solid fa-robot"></i>
+      </div>
+      <div class="service-info">
+        <div class="service-header-row">
+          <h3 class="service-title">AI Chatbots &amp; Automation</h3>
+          <svg class="service-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </div>
+        <p class="service-desc">24/7 intelligent customer assistance &amp; smart workflow bots.</p>
+        <span class="service-tag tag-cyan">Smart AI</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Interactive Dots Indicator -->
+  <div class="mobile-services-dots" id="mobileServicesDots">
+    <span class="fader-dot active" data-index="0"></span>
+    <span class="fader-dot" data-index="1"></span>
+    <span class="fader-dot" data-index="2"></span>
+    <span class="fader-dot" data-index="3"></span>
+    <span class="fader-dot" data-index="4"></span>
+    <span class="fader-dot" data-index="5"></span>
+    <span class="fader-dot" data-index="6"></span>
+    <span class="fader-dot" data-index="7"></span>
+  </div>
+</section>
+
+<!-- DUAL SHOWCASE SECTION: CLIENT LOGOS + INDUSTRIES (BOTTOM) -->
+<section class="showcase-section">
+
+  <!-- 1. CLIENT LOGOS SHOWCASE -->
+  <div class="showcase-group">
+    <div class="showcase-header">
+      <i class="fa-solid fa-shield-halved"></i>
+      <span>TRUSTED BY 50+ VALUED CLIENTS &amp; GLOBAL BRANDS</span>
+    </div>
+
+    <div class="marquee-wrapper">
+      <div class="marquee-track track-left">
+        <div class="marquee-content">
+          <div class="client-logo-card"><img src="logo/logo-01.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-02.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-03.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-04.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-05.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-06.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-07.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-08.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-09.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-10.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-11.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-12.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-13.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-14.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-15.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-16.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-17.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-18.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-19.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-20.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-21.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-22.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-23.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-24.svg" alt="Client Logo" loading="lazy"></div>
+        </div>
+        <!-- Duplicate for seamless infinite loop -->
+        <div class="marquee-content" aria-hidden="true">
+          <div class="client-logo-card"><img src="logo/logo-01.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-02.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-03.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-04.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-05.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-06.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-07.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-08.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-09.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-10.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-11.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-12.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-13.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-14.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-15.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-16.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-17.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-18.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-19.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-20.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-21.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-22.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-23.svg" alt="Client Logo" loading="lazy"></div>
+          <div class="client-logo-card"><img src="logo/logo-24.svg" alt="Client Logo" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. INDUSTRIES WE SERVE SHOWCASE -->
+  <div class="showcase-group">
+    <div class="showcase-header">
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <span>INDUSTRIES WE POWER &amp; BUILD</span>
+    </div>
+
+    <div class="marquee-wrapper">
+      <div class="marquee-track track-right">
+        <div class="marquee-content">
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Medical%20Equipment." target="_blank" rel="noopener" class="industry-pill pill-mint">
+            <i class="fa-solid fa-stethoscope"></i> Medical Equipment
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Dental%20%26%20Medical%20Supplies." target="_blank" rel="noopener" class="industry-pill pill-teal">
+            <i class="fa-solid fa-capsules"></i> Dental &amp; Medical Supplies
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Fitness%20Equipment." target="_blank" rel="noopener" class="industry-pill pill-coral">
+            <i class="fa-solid fa-dumbbell"></i> Fitness Equipment
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Outdoor%20%26%20Camping." target="_blank" rel="noopener" class="industry-pill pill-emerald">
+            <i class="fa-solid fa-campground"></i> Outdoor &amp; Camping
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Travel%20%26%20Luggage." target="_blank" rel="noopener" class="industry-pill pill-sky">
+            <i class="fa-solid fa-suitcase-rolling"></i> Travel &amp; Luggage
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Bags%20%26%20Accessories." target="_blank" rel="noopener" class="industry-pill pill-pink">
+            <i class="fa-solid fa-bag-shopping"></i> Bags &amp; Accessories
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Restaurants%20%26%20Food." target="_blank" rel="noopener" class="industry-pill pill-amber">
+            <i class="fa-solid fa-utensils"></i> Restaurants &amp; Food
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Automotive%20Parts%20%26%20Accessories." target="_blank" rel="noopener" class="industry-pill pill-coral">
+            <i class="fa-solid fa-car"></i> Automotive Parts &amp; Accessories
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Bikes%20%26%20Motorcycles." target="_blank" rel="noopener" class="industry-pill pill-yellow">
+            <i class="fa-solid fa-motorcycle"></i> Bikes &amp; Motorcycles
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Marine%20%26%20Boating." target="_blank" rel="noopener" class="industry-pill pill-cyan">
+            <i class="fa-solid fa-anchor"></i> Marine &amp; Boating
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Education%20%26%20Learning." target="_blank" rel="noopener" class="industry-pill pill-indigo">
+            <i class="fa-solid fa-graduation-cap"></i> Education &amp; Learning
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Office%20%26%20Business%20Services." target="_blank" rel="noopener" class="industry-pill pill-slate">
+            <i class="fa-solid fa-briefcase"></i> Office &amp; Business Services
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Real%20Estate." target="_blank" rel="noopener" class="industry-pill pill-teal">
+            <i class="fa-solid fa-building"></i> Real Estate
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Hospitality%20%26%20Tourism." target="_blank" rel="noopener" class="industry-pill pill-gold">
+            <i class="fa-solid fa-hotel"></i> Hospitality &amp; Tourism
+          </a>
+        </div>
+        <!-- Duplicate for seamless infinite loop -->
+        <div class="marquee-content" aria-hidden="true">
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Medical%20Equipment." target="_blank" rel="noopener" class="industry-pill pill-mint">
+            <i class="fa-solid fa-stethoscope"></i> Medical Equipment
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Dental%20%26%20Medical%20Supplies." target="_blank" rel="noopener" class="industry-pill pill-teal">
+            <i class="fa-solid fa-capsules"></i> Dental &amp; Medical Supplies
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Fitness%20Equipment." target="_blank" rel="noopener" class="industry-pill pill-coral">
+            <i class="fa-solid fa-dumbbell"></i> Fitness Equipment
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Outdoor%20%26%20Camping." target="_blank" rel="noopener" class="industry-pill pill-emerald">
+            <i class="fa-solid fa-campground"></i> Outdoor &amp; Camping
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Travel%20%26%20Luggage." target="_blank" rel="noopener" class="industry-pill pill-sky">
+            <i class="fa-solid fa-suitcase-rolling"></i> Travel &amp; Luggage
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Bags%20%26%20Accessories." target="_blank" rel="noopener" class="industry-pill pill-pink">
+            <i class="fa-solid fa-bag-shopping"></i> Bags &amp; Accessories
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Restaurants%20%26%20Food." target="_blank" rel="noopener" class="industry-pill pill-amber">
+            <i class="fa-solid fa-utensils"></i> Restaurants &amp; Food
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Automotive%20Parts%20%26%20Accessories." target="_blank" rel="noopener" class="industry-pill pill-coral">
+            <i class="fa-solid fa-car"></i> Automotive Parts &amp; Accessories
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Bikes%20%26%20Motorcycles." target="_blank" rel="noopener" class="industry-pill pill-yellow">
+            <i class="fa-solid fa-motorcycle"></i> Bikes &amp; Motorcycles
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Marine%20%26%20Boating." target="_blank" rel="noopener" class="industry-pill pill-cyan">
+            <i class="fa-solid fa-anchor"></i> Marine &amp; Boating
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Education%20%26%20Learning." target="_blank" rel="noopener" class="industry-pill pill-indigo">
+            <i class="fa-solid fa-graduation-cap"></i> Education &amp; Learning
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Office%20%26%20Business%20Services." target="_blank" rel="noopener" class="industry-pill pill-slate">
+            <i class="fa-solid fa-briefcase"></i> Office &amp; Business Services
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Real%20Estate." target="_blank" rel="noopener" class="industry-pill pill-teal">
+            <i class="fa-solid fa-building"></i> Real Estate
+          </a>
+          <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20am%20interested%20in%20solutions%20for%20Hospitality%20%26%20Tourism." target="_blank" rel="noopener" class="industry-pill pill-gold">
+            <i class="fa-solid fa-hotel"></i> Hospitality &amp; Tourism
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- Join.chat WhatsApp Widget (Right Side) -->
+<div class="joinchat-widget" id="joinchatWidget">
+  <!-- Popup Chat Window -->
+  <div class="joinchat-box" id="joinchatBox">
+    <div class="joinchat-header">
+      <div class="joinchat-avatar">
+        <img src="favicon.svg" alt="Nextovation Hub" />
+      </div>
+      <div class="joinchat-agent">
+        <div class="joinchat-name">Anus Mushtaq</div>
+        <div class="joinchat-status"><span class="status-indicator"></span> Online • Typically replies in minutes</div>
+      </div>
+      <button class="joinchat-close" id="joinchatClose" aria-label="Close Chat">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="joinchat-body">
+      <div class="joinchat-msg">
+        <p>Hello there! 👋 Welcome to Nextovation Hub. How can we help you with your project or business today?</p>
+        <span class="joinchat-time" id="joinchatTime">Just now</span>
+      </div>
+    </div>
+    <div class="joinchat-footer">
+      <a href="https://wa.me/923113245512?text=Hello%20Anus%2C%20I%20visited%20your%20digital%20card%20and%20would%20like%20to%20chat%20with%20you." target="_blank" rel="noopener" class="joinchat-send-btn">
+        <i class="fa-brands fa-whatsapp"></i> Open WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- Prompt Bubble -->
+  <div class="joinchat-bubble" id="joinchatBubble">
+    <span>Need help? Chat with us! 👋</span>
+  </div>
+
+  <!-- Floating WhatsApp Action Button -->
+  <button class="joinchat-btn" id="joinchatBtn" aria-label="WhatsApp Chat Widget">
+    <span class="joinchat-badge">1</span>
+    <span class="joinchat-pulse"></span>
+    <i class="fa-brands fa-whatsapp"></i>
+  </button>
+</div>
+
+<script>
+  (function() {
+    /* 1. JoinChat Widget Interaction */
+    const btn = document.getElementById('joinchatBtn');
+    const bubble = document.getElementById('joinchatBubble');
+    const box = document.getElementById('joinchatBox');
+    const closeBtn = document.getElementById('joinchatClose');
+    const timeEl = document.getElementById('joinchatTime');
+
+    if (timeEl) {
+      const now = new Date();
+      timeEl.textContent = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    }
+
+    function toggleChat(e) {
+      if (e) e.stopPropagation();
+      const isActive = box.classList.toggle('active');
+      if (isActive && bubble) {
+        bubble.style.display = 'none';
+      }
+    }
+
+    function closeChat(e) {
+      if (e) e.stopPropagation();
+      box.classList.remove('active');
+    }
+
+    if (btn) btn.addEventListener('click', toggleChat);
+    if (bubble) bubble.addEventListener('click', toggleChat);
+    if (closeBtn) closeBtn.addEventListener('click', closeChat);
+
+    document.addEventListener('click', function(e) {
+      if (box && btn && !box.contains(e.target) && !btn.contains(e.target) && (!bubble || !bubble.contains(e.target))) {
+        box.classList.remove('active');
+      }
+    });
+
+    /* 2. Interactive Ambient Particle Constellation Network (Outside Card) */
+    const canvas = document.getElementById('bg-canvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      window.addEventListener('resize', function() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const mouse = { x: null, y: null, maxDist: 150 };
+      window.addEventListener('mousemove', function(e) {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+      window.addEventListener('mouseleave', function() {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      const particleCount = Math.min(Math.floor((width * height) / 18000), 55);
+      const particles = [];
+      const colors = ['#A553FF', '#E33FC5', '#FF39FF', '#38BDF8', '#34D399'];
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.vx = (Math.random() - 0.5) * 0.7;
+          this.vy = (Math.random() - 0.5) * 0.7;
+          this.radius = Math.random() * 2.2 + 1.2;
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+          this.baseAlpha = Math.random() * 0.5 + 0.3;
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+
+          if (this.x < 0 || this.x > width) this.vx = -this.vx;
+          if (this.y < 0 || this.y > height) this.vy = -this.vy;
+
+          // Mouse subtle attraction
+          if (mouse.x !== null && mouse.y !== null) {
+            const dx = mouse.x - this.x;
+            const dy = mouse.y - this.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < mouse.maxDist) {
+              const force = (mouse.maxDist - dist) / mouse.maxDist;
+              this.x += (dx / dist) * force * 0.8;
+              this.y += (dy / dist) * force * 0.8;
+            }
+          }
+        }
+
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = this.color;
+          ctx.globalAlpha = this.baseAlpha;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+      }
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Draw connecting constellation lines
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 115) {
+              const alpha = (1 - dist / 115) * 0.22;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = '#A553FF';
+              ctx.globalAlpha = alpha;
+              ctx.lineWidth = 0.9;
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Draw & update particles
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+        }
+
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    /* 3. 3D Card Interactive Tilt */
+    const cardFrame = document.getElementById('cardFrame');
+    if (cardFrame && window.innerWidth > 900) {
+      cardFrame.addEventListener('mousemove', function(e) {
+        const rect = cardFrame.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const rotateX = (-y / (rect.height / 2)) * 6;
+        const rotateY = (x / (rect.width / 2)) * 6;
+        cardFrame.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
+      });
+
+      cardFrame.addEventListener('mouseleave', function() {
+        cardFrame.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)';
+      });
+    }
+
+    /* 4. Mobile Services Fade In / Fade Out Controller */
+    const fader = document.getElementById('mobileServicesFader');
+    const dotsContainer = document.getElementById('mobileServicesDots');
+    if (fader && dotsContainer) {
+      const cards = fader.querySelectorAll('.service-card');
+      const dots = dotsContainer.querySelectorAll('.fader-dot');
+      let currentIndex = 0;
+      let faderInterval = null;
+
+      function showCard(index) {
+        cards.forEach((c, i) => {
+          c.classList.toggle('active', i === index);
+        });
+        dots.forEach((d, i) => {
+          d.classList.toggle('active', i === index);
+        });
+        currentIndex = index;
+      }
+
+      function nextCard() {
+        const next = (currentIndex + 1) % cards.length;
+        showCard(next);
+      }
+
+      function startFader() {
+        if (!faderInterval) {
+          faderInterval = setInterval(nextCard, 4200);
+        }
+      }
+
+      function stopFader() {
+        if (faderInterval) {
+          clearInterval(faderInterval);
+          faderInterval = null;
+        }
+      }
+
+      dots.forEach((dot) => {
+        dot.addEventListener('click', function() {
+          const idx = parseInt(this.getAttribute('data-index'), 10);
+          showCard(idx);
+          stopFader();
+          startFader();
+        });
+      });
+
+      fader.addEventListener('mouseenter', stopFader);
+      fader.addEventListener('mouseleave', startFader);
+      fader.addEventListener('touchstart', stopFader, { passive: true });
+      fader.addEventListener('touchend', startFader, { passive: true });
+
+      startFader();
+    }
+  })();
+</script>
+
+</body>
+</html>

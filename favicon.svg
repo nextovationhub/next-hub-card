@@ -1,0 +1,39 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 224 103">
+<defs>
+	<linearGradient id="FAV_1_" gradientUnits="userSpaceOnUse" x1="131.5673" y1="-158.291" x2="133.9874" y2="-90.351" gradientTransform="matrix(1 0 0 -1 24.51 -65.48)">
+		<stop offset="0" style="stop-color:#3D0056"/>
+		<stop offset="1" style="stop-color:#E33FC5"/>
+	</linearGradient>
+	<linearGradient id="FAV_2_" gradientUnits="userSpaceOnUse" x1="914.15" y1="-177.5713" x2="1044.87" y2="-177.5713" gradientTransform="matrix(-1 0 0 1 1044.84 228.91)">
+		<stop offset="0" style="stop-color:#A553FF"/>
+		<stop offset="1" style="stop-color:#AE38FF"/>
+	</linearGradient>
+	<linearGradient id="FAV_3_" gradientUnits="userSpaceOnUse" x1="42.4206" y1="-90.7294" x2="40.5806" y2="-149.7894" gradientTransform="matrix(1 0 0 -1 24.51 -65.48)">
+		<stop offset="0" style="stop-color:#2A0056"/>
+		<stop offset="0.77" style="stop-color:#8A0BFF;stop-opacity:0.5"/>
+	</linearGradient>
+	<linearGradient id="FAV_4_" gradientUnits="userSpaceOnUse" x1="101.2582" y1="-147.0078" x2="120.2482" y2="-127.5878" gradientTransform="matrix(1 0 0 -1 24.51 -65.48)">
+		<stop offset="0" style="stop-color:#DF38FF"/>
+		<stop offset="1" style="stop-color:#FF39FF"/>
+	</linearGradient>
+	<linearGradient id="FAV_5_" gradientUnits="userSpaceOnUse" x1="107.8811" y1="-154.1711" x2="122.1811" y2="-139.551" gradientTransform="matrix(1 0 0 -1 24.51 -65.48)">
+		<stop offset="0" style="stop-color:#2A0056;stop-opacity:0"/>
+		<stop offset="1" style="stop-color:#8A0BFF"/>
+	</linearGradient>
+	<linearGradient id="FAV_6_" gradientUnits="userSpaceOnUse" x1="101.9484" y1="-85.9107" x2="12.7684" y2="-101.6807" gradientTransform="matrix(1 0 0 -1 24.51 -65.48)">
+		<stop offset="0" style="stop-color:#A553FF"/>
+		<stop offset="1" style="stop-color:#AE38FF"/>
+	</linearGradient>
+	<linearGradient id="FAV_7_" gradientUnits="userSpaceOnUse" x1="11.1691" y1="-89.5708" x2="93.6691" y2="-81.6808" gradientTransform="matrix(1 0 0 -1 24.51 -65.48)">
+		<stop offset="0" style="stop-color:#8A0BFF"/>
+		<stop offset="1" style="stop-color:#2A0056;stop-opacity:0"/>
+	</linearGradient>
+</defs>
+<path fill="url(#FAV_1_)" d="M167.3,0c-6.6,0-12.7,3.8-15.6,9.7l-15.8,32.4c-8,16.5-22.3,25.3-42.5,9.6c-0.1,0.1-0.2,0.2-0.3,0.4C104,62.8,124.6,83,132.2,90.6c23.4,23.2,42.9,9.3,53-11.4L223.8,0L167.3,0z"/>
+<path fill="url(#FAV_2_)" d="M56.5,102.7c6.6,0,12.7-3.8,15.6-9.7c4.2-8.6,10.5-21.5,15.8-32.4c8-16.5,22.3-25.3,42.5-9.6c0.1-0.1,0.2-0.3,0.3-0.4c-10.9-10.7-31.5-30.9-39.2-38.5c-23.4-23.2-42.9-9.3-53,11.4L0,102.7L56.5,102.7z"/>
+<path fill="url(#FAV_3_)" d="M56.5,102.7c6.6,0,12.7-3.8,15.6-9.7c4.2-8.6,10.5-21.5,15.8-32.4c8-16.5,22.3-25.3,42.5-9.6c0.1-0.1,0.2-0.3,0.3-0.4c-10.9-10.7-31.5-30.9-39.2-38.5c-23.4-23.2-42.9-9.3-53,11.4L0,102.7L56.5,102.7z"/>
+<path fill="url(#FAV_4_)" d="M132.2,90.6c23.4,23.2,42.9,9.3,53-11.4l21.4-44c-31.3,64.6-83.8,41.1-113.2,16.5c-0.1,0.1-0.2,0.2-0.3,0.4C104,62.8,124.6,83,132.2,90.6z"/>
+<path opacity="0.32" fill="url(#FAV_5_)" d="M107,65.8c9.7,9.6,20.2,19.9,25.2,24.9c23.4,23.2,42.9,9.3,53-11.4l11-22.6C169.6,92.3,133.5,82.8,107,65.8z"/>
+<path fill="url(#FAV_6_)" d="M91.5,12.1c-23.4-23.2-42.9-9.3-53,11.4l-21.4,44c31.3-64.6,83.8-41.1,113.2-16.5c0.1-0.1,0.2-0.3,0.3-0.4C119.8,39.9,99.2,19.7,91.5,12.1z"/>
+<path opacity="0.42" fill="url(#FAV_7_)" d="M116.7,36.9C107,27.4,96.5,17,91.5,12.1c-23.4-23.2-42.9-9.3-53,11.4L27.5,46C54.2,10.4,90.3,19.9,116.7,36.9z"/>
+</svg>
