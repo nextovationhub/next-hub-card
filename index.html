@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anus Mushtaq — Nextovation Hub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -25,17 +26,28 @@
     --line: rgba(243,238,251,0.14);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html,body{
+  html{
+    background:var(--bg-0);
+    overflow-x:hidden;
+    margin:0;
+    padding:0;
+    width:100%;
+  }
+  body{
     min-height:100vh;
+    min-height:100dvh;
     background:var(--bg-0);
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:flex-start;
+    justify-content:center;
     font-family:'Inter',sans-serif;
-    padding:34px 18px 10px;
-    gap:16px;
+    padding:16px 18px 16px;
+    gap:10px;
     overflow-x:hidden;
+    margin:0;
+    width:100%;
+    position:relative;
   }
 
   /* ambient animated background blobs */
@@ -46,6 +58,7 @@
     opacity:0.45;
     pointer-events:none;
     z-index:0;
+    contain:strict;
   }
   .bg-blob.b1{
     width:480px; height:480px;
@@ -95,13 +108,14 @@
     display:flex;
     flex-direction:column;
     gap:12px;
-    animation:rise 0.8s cubic-bezier(.19,1,.22,1) both;
+    animation:rise 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    will-change:opacity, transform;
   }
   .services-left{
-    animation-delay:0.1s;
+    animation-delay:0.04s;
   }
   .services-right{
-    animation-delay:0.2s;
+    animation-delay:0.08s;
   }
 
   /* Column Headers */
@@ -325,12 +339,13 @@
     display:flex;
     flex-direction:column;
     align-items:center;
-    animation:rise 0.7s cubic-bezier(.19,1,.22,1) both;
+    animation:rise 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
     perspective:1000px;
+    will-change:opacity, transform;
   }
   @keyframes rise{
-    from{ opacity:0; transform:translateY(16px);}
-    to{ opacity:1; transform:translateY(0);}
+    from{ opacity:0; transform:translate3d(0, 10px, 0); }
+    to{ opacity:1; transform:translate3d(0, 0, 0); }
   }
 
   .card-glow-aura{
@@ -384,9 +399,11 @@
   .bg-canvas{
     position:fixed;
     top:0; left:0;
-    width:100%; height:100%;
+    width:100vw;
+    height:100vh;
     pointer-events:none;
     z-index:0;
+    contain:strict;
   }
 
   .content{
@@ -400,8 +417,6 @@
     justify-content:center;
     align-items:center;
     text-align:center;
-    opacity:0;
-    animation:fadeUp 0.6s ease 0.15s forwards;
   }
   .brand-logo{
     height:34px;
@@ -418,8 +433,6 @@
     flex-direction:column;
     align-items:center;
     text-align:center;
-    opacity:0;
-    animation:fadeUp 0.6s ease 0.28s forwards;
   }
   .badge{
     display:inline-flex;
@@ -470,8 +483,6 @@
     height:1px;
     background:linear-gradient(90deg, var(--line), transparent);
     margin:16px 0;
-    opacity:0;
-    animation:fadeUp 0.6s ease 0.36s forwards;
   }
 
   .contact-list{
@@ -486,15 +497,9 @@
     gap:12px;
     text-decoration:none;
     color:var(--text);
-    opacity:0;
-    animation:fadeUp 0.55s ease forwards;
     transition:transform 0.2s ease;
   }
   .contact-item:hover{ transform:translateX(3px); }
-  .contact-item:nth-child(1){ animation-delay:0.44s; }
-  .contact-item:nth-child(2){ animation-delay:0.52s; }
-  .contact-item:nth-child(3){ animation-delay:0.60s; }
-  .contact-item:nth-child(4){ animation-delay:0.68s; }
 
   .icon-wrap{
     width:34px; height:34px;
@@ -541,8 +546,6 @@
     flex-direction:column;
     align-items:center;
     gap:8px;
-    opacity:0;
-    animation:fadeUp 0.6s ease 0.74s forwards;
   }
   .social-label{
     font-size:10px;
@@ -591,8 +594,6 @@
     color:var(--text-dim);
     text-align:center;
     letter-spacing:0.02em;
-    opacity:0;
-    animation:fadeUp 0.6s ease 0.82s forwards;
   }
   .footer-tag b{
     color:var(--pink);
@@ -865,12 +866,14 @@
     width:100%;
     max-width:1320px;
     margin:0 auto;
-    padding-bottom:12px;
+    padding-bottom:0;
+    margin-bottom:0;
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:10px;
-    animation:rise 0.8s cubic-bezier(.19,1,.22,1) 0.3s both;
+    gap:8px;
+    animation:rise 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) 0.08s both;
+    will-change:opacity, transform;
   }
   .showcase-group{
     width:100%;
@@ -901,18 +904,22 @@
   }
   .marquee-wrapper{
     width:100%;
+    max-width:100%;
     overflow:hidden;
     display:flex;
     flex-direction:column;
     position:relative;
     mask-image:linear-gradient(to right, transparent, black 7%, black 93%, transparent);
     -webkit-mask-image:linear-gradient(to right, transparent, black 7%, black 93%, transparent);
-    padding:8px 0;
+    padding:6px 0;
+    contain:paint;
+    isolation:isolate;
   }
   .marquee-track{
     display:flex;
     width:max-content;
     gap:12px;
+    will-change:transform;
   }
   .marquee-track.track-left{
     animation:marqueeScrollLeft 82s linear infinite;
@@ -924,12 +931,12 @@
     animation-play-state:paused;
   }
   @keyframes marqueeScrollLeft{
-    0%{ transform:translateX(0); }
-    100%{ transform:translateX(-50%); }
+    0%{ transform:translate3d(0, 0, 0); }
+    100%{ transform:translate3d(-50%, 0, 0); }
   }
   @keyframes marqueeScrollRight{
-    0%{ transform:translateX(-50%); }
-    100%{ transform:translateX(0); }
+    0%{ transform:translate3d(-50%, 0, 0); }
+    100%{ transform:translate3d(0, 0, 0); }
   }
   .marquee-content{
     display:flex;
@@ -1030,15 +1037,16 @@
     height:100%;
     opacity:0;
     visibility:hidden;
-    transform:translateY(8px) scale(0.97);
-    transition:opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0.6s;
+    transform:translate3d(0, 4px, 0);
+    transition:opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
     pointer-events:none;
     padding:13px 15px 14px;
+    will-change:opacity, transform;
   }
   .mobile-services-fader .service-card.active{
     opacity:1;
     visibility:visible;
-    transform:translateY(0) scale(1);
+    transform:translate3d(0, 0, 0);
     pointer-events:auto;
     z-index:2;
   }
@@ -1074,15 +1082,23 @@
 
   /* Responsive styling */
   @media (max-width: 1140px){
-    html,body{
-      min-height:auto;
-      padding:20px 14px 4px;
-      gap:14px;
+    html{
+      height:auto;
+      overflow-x:hidden;
+    }
+    body{
+      min-height:auto !important;
+      height:auto !important;
+      padding:14px 12px 14px !important;
+      gap:10px !important;
+      justify-content:flex-start !important;
+      overflow-x:hidden;
     }
     .main-layout{
       flex-direction:column;
-      gap:14px;
+      gap:10px;
       width:100%;
+      margin:0 auto;
     }
     .stage{
       order:1;
@@ -1095,7 +1111,7 @@
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:6px;
+      gap:5px;
       width:100%;
       max-width:100%;
       margin:0 auto;
@@ -1106,38 +1122,78 @@
     .showcase-section{
       padding-bottom:0 !important;
       margin-bottom:0 !important;
-      gap:6px;
+      gap:5px !important;
+      width:100%;
+      max-width:100%;
+      overflow:hidden;
+    }
+    .showcase-group{
+      gap:2px !important;
+      margin-bottom:0 !important;
+      width:100%;
+      max-width:100%;
+    }
+    .marquee-wrapper{
+      padding:5px 0 !important;
+      margin-bottom:0 !important;
+      contain:paint;
     }
   }
 
   @media (max-width:480px){
-    html,body{
-      min-height:auto;
-      padding:14px 10px 2px !important;
-      gap:10px !important;
+    html{
+      height:auto;
+      overflow-x:hidden;
+    }
+    body{
+      min-height:auto !important;
+      height:auto !important;
+      padding:12px 8px 12px !important;
+      gap:8px !important;
+      justify-content:flex-start !important;
+      overflow-x:hidden;
+    }
+    .main-layout{
+      gap:8px !important;
     }
     .card-frame{ width:100%; }
-    .content{ padding:14px 16px 18px; }
-    .brand-row{ margin-bottom:10px; }
-    .brand-row svg{ height:56px; }
-    .identity{ margin-bottom:16px; }
-    .name{font-size:26px;}
-    .role{ font-size:13px; }
-    .divider{ margin:16px 0; }
-    .contact-list{ gap:12px; }
-    .footer-tag{ margin-top:16px; padding-top:14px; }
-    .mobile-services-fader{ height:108px; width:100%; }
-    .mobile-services-fader .service-card{ padding:12px 14px 14px; }
-    .service-icon-box{ width:42px; height:42px; font-size:17px; }
-    .client-logo-card{ height:48px; min-width:118px; padding:4px 12px; }
-    .client-logo-card img{ height:42px; width:98px; }
+    .content{ padding:13px 14px 15px; }
+    .brand-row{ margin-bottom:8px; }
+    .brand-logo{ height:30px; }
+    .identity{ margin-bottom:12px; }
+    .name{ font-size:24px; }
+    .badge{ font-size:10px; padding:4px 10px; }
+    .divider{ margin:12px 0; }
+    .contact-list{ gap:10px; margin-bottom:4px; }
+    .contact-item{ gap:10px; }
+    .icon-wrap{ width:30px; height:30px; font-size:13px; }
+    .contact-label{ font-size:9.5px; }
+    .contact-value{ font-size:13px; }
+    .social-section{ margin-top:12px; gap:6px; }
+    .social-label{ font-size:9.5px; }
+    .social-bar{ gap:8px; }
+    .social-btn{ width:30px; height:30px; font-size:15px; }
+    .footer-tag{ margin-top:12px; padding-top:10px; font-size:10.5px; }
+    .mobile-services-fader{ height:105px; width:100%; }
+    .mobile-services-fader .service-card{ padding:10px 12px 12px; border-radius:14px; }
+    .service-icon-box{ width:38px; height:38px; font-size:16px; border-radius:11px; }
+    .service-title{ font-size:12.5px; }
+    .service-desc{ font-size:11px; }
+    .service-tag{ font-size:9.5px; padding:2px 7px; }
+    .client-logo-card{ height:44px; min-width:110px; padding:3px 10px; border-radius:11px; }
+    .client-logo-card img{ height:38px; width:90px; }
+    .industry-pill{ font-size:10.5px; padding:3.5px 10px; }
     .showcase-section{
       padding-bottom:0 !important;
-      gap:6px !important;
+      gap:4px !important;
       margin-bottom:0 !important;
     }
-    .showcase-group{ gap:3px !important; }
-    .marquee-wrapper{ padding:6px 0 !important; }
+    .showcase-header{ font-size:9.5px; margin-bottom:1px; }
+    .showcase-group{ gap:1px !important; margin-bottom:0 !important; }
+    .marquee-wrapper{ padding:3px 0 !important; margin-bottom:0 !important; contain:paint; }
+    .joinchat-widget{ bottom:14px; right:14px; }
+    .joinchat-btn{ width:48px; height:48px; font-size:24px; }
+    .joinchat-bubble{ font-size:11px; padding:7px 11px; margin-bottom:6px; }
   }
 </style>
 </head>
